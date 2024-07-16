@@ -7,4 +7,4 @@ Questo progetto coinvolge vari passi di implementazione:
 
 ### Come eseguire:
 1. Clonare in una cartella a scelta.
-2. Nella cartella in cui si è clonato la repo eseguire: python SquareAttack.py [True]
+2. Nella cartella in cui si è clonato la repo eseguire: ``` python SquareAttack.py [True] ```
