@@ -61,7 +61,8 @@ class Key:
     
             
 def rot_word(v: bytearray):
-    '''Funzione che prende in input 4 bytes e li ruota a destra di una posizione'''
+    '''Funzione che prende in input 4 bytes e li ruota a sinistra
+      di una posizione'''
     if len(v) != 4:
         print("Errore, numero di bytes passati diverso da 4")
         quit()
