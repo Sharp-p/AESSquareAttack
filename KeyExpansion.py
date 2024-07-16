@@ -136,7 +136,7 @@ def key_expansion(k: str, n: int= 10):
         expanded_key.append(Key(chiave))
     return expanded_key
 
-""" ex= key_expansion("aa")
+""" ex= key_expansion("2b7e151628aed27babf7158809cf4f3c")
 for x in ex:
     print(f"{x.take_column(0)}{x.take_column(1)}{x.take_column(2)}{x.take_column(3)}")
-    pass  """
+    pass """  

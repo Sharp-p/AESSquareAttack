@@ -86,12 +86,14 @@ def find_guess(dset: DeltaSet, i: int, k: str) -> str:
         del copy
 
     if len(valids) != 1:
-        while len(valids) != 1:
+        #print("prima",valids)
+        while len(valids) > 1:
             for b in valids:
                 states= setup(k)
                 reverse_state(b, i, states)
                 if not states.check(i):
                     valids.remove(b)
+    #print("dopo", valids)
 
     return valids[0]    
 
@@ -102,7 +104,8 @@ def fourth_key(k: str) -> str:
     key= ""
     for index in range(16):
         key= key + find_guess(set, index, k)
-        if index % 4 == 0: print(index+1, "-esimo byte trovato")
+        #if index % 4 == 0: 
+        print(index+1, "-esimo byte trovato")
     return key
 
 def key_deexpansion(k: str):
@@ -138,12 +141,13 @@ def key_deexpansion(k: str):
     return keys
 
 def main(full: bool):
-    k= "aa"
+    k= "2b7e151628aed27babf7158809cf4f3c"
     lst_key= ""
     if full:
-        lst_key= fourth_key(k) #(ci mette un minuto buono, il risultato è quello qui sotto)
+        lst_key= fourth_key(k) #(ci mette un minuto buono, il risultato per k='aa' è quello qui sotto)
     else:
         lst_key= "4483ed3987ef15c3751b75b27e14ee2b"
+    #print("Chiave del quarto round", lst_key)
     keys= key_deexpansion(lst_key)
     print("La chiave originaria usata per cifrare è:\n", keys[0])
 
