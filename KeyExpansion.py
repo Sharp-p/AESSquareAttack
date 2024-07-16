@@ -44,7 +44,6 @@ class Key:
             i+= 1
             
     def __str__(self) -> str:
-        #codice orribile spero dio perdoni i miei peccati
         table= f'{hex(self.matrix[0][0]).removeprefix("0x")} {hex(self.matrix[1][0]).removeprefix("0x")} {hex(self.matrix[2][0]).removeprefix("0x")} {hex(self.matrix[3][0]).removeprefix("0x")} \n\
 {hex(self.matrix[0][1]).removeprefix("0x")} {hex(self.matrix[1][1]).removeprefix("0x")} {hex(self.matrix[2][1]).removeprefix("0x")} {hex(self.matrix[3][1]).removeprefix("0x")} \n\
 {hex(self.matrix[0][2]).removeprefix("0x")} {hex(self.matrix[1][2]).removeprefix("0x")} {hex(self.matrix[2][2]).removeprefix("0x")} {hex(self.matrix[3][2]).removeprefix("0x")} \n\

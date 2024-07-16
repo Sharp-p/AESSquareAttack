@@ -3,6 +3,8 @@ from KeyExpansion import Key
 import KeyExpansion as ke
 import AES
 import secrets
+import sys
+import time
 
 class DeltaSet:
     def __init__(self, set: list= []):
@@ -72,7 +74,7 @@ def reverse_state(guess: str, i: int, dset: DeltaSet) -> None:
 def find_guess(dset: DeltaSet, i: int, k: str) -> str:
     '''Funzione che per un certo indice (byte) della chiave del quarto round 
     trova qual'è il byte effettivo della round key'''
-    
+
     valids= []
 
     for x in range(256):
@@ -100,7 +102,7 @@ def fourth_key(k: str) -> str:
     key= ""
     for index in range(16):
         key= key + find_guess(set, index, k)
-        if index % 4 == 0: print(index, "-esimo byte trovato")
+        if index % 4 == 0: print(index+1, "-esimo byte trovato")
     return key
 
 def key_deexpansion(k: str):
@@ -135,8 +137,22 @@ def key_deexpansion(k: str):
     keys.reverse()
     return keys
 
-k= "aa"
-#lst_key= fourth_key(k) #(ci mette un po' tanto tempo il risultato è quello qui sotto)
-lst_key= "4483ed3987ef15c3751b75b27e14ee2b"
-keys= key_deexpansion(lst_key)
-print(keys[0])
+def main(full: bool):
+    k= "aa"
+    lst_key= ""
+    if full:
+        lst_key= fourth_key(k) #(ci mette un minuto buono, il risultato è quello qui sotto)
+    else:
+        lst_key= "4483ed3987ef15c3751b75b27e14ee2b"
+    keys= key_deexpansion(lst_key)
+    print("La chiave originaria usata per cifrare è:\n", keys[0])
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        main(False)
+    elif sys.argv[1] == "True":
+        print("Attenzione: esecuzione completa scelta, potrebbe richiede alcuni minuti.")
+        start= time.time()
+        main(True)
+        end= time.time()
+        print("Tempo di esecuzione:", end-start)
